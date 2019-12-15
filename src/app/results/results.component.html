@@ -1,6 +1,19 @@
-<mat-card
+<ng-container *ngIf="noActivitiesFound()">
+  No activity found with the specified filters.
+</ng-container>
+<ng-container *ngIf="!noActivitiesFound()">
+  <ng-container *ngFor="let activity of activities">
+  <mat-card
   class="activity-card"
-  *ngFor="let activity of activities"
-  #activityCard
-  onclick="openModal(activity)"
-></mat-card>
+
+  (click)="openModal(activity)"
+>
+    <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{activity.activity}}</mat-card-title>
+    <mat-card-subtitle>Price: {{activity.price}}</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+</ng-container>
+</ng-container>
+

@@ -1,1 +1,28 @@
-<p>modal works!</p>
+<div class="modal-container">
+  <div class="detail-field">
+    <strong>Title:</strong>
+    <div>{{data['activity']}}</div>
+  </div>
+  <div class="detail-field">
+    <strong>Type:</strong>
+    <div>{{data['type']}}</div>
+  </div>
+  <div class="detail-field">
+    <strong>Participants:</strong>
+    <div>{{data['participants']}}</div>
+  </div>
+  <div class="detail-field">
+    <strong>Price:</strong>
+    <div>{{data['price']}}</div>
+  </div>
+  <div class="detail-field">
+    <strong>Link:</strong>
+    <div>{{data['link']}}</div>
+  </div>
+  <div class="detail-field">
+    <strong>Key:</strong>
+    <div>{{data['key']}}</div>
+  </div>
+  <button mat-button (click)="onCloseClick()">Close</button>
+</div>
+

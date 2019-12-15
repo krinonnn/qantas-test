@@ -1,10 +1,13 @@
 <div class="page-container">
   <div class="content mat-typography">
-    <h1 id="red-font" class=".mat-headline">Activity Finder</h1>
-    <h2 id="red-font" class=".mat-title">Selection Criteria</h2>
-    <app-filter></app-filter>
-    <br /><br />
-    <h2 id="red-font" class=".mat-title">Results</h2>
-    <app-results [activities]="activities"></app-results>
+    <div class="section">
+      <h1 class="headline red-font">Activity Finder</h1>
+      <h2 class="red-font">Selection Criteria</h2>
+      <app-filter (submitFilters)="requestForActivities($event)"></app-filter>
+    </div>
+    <div class="section">
+      <h2 id="red-font" class=".mat-title">Results</h2>
+    <app-results [activities]="results"></app-results>
+    </div>
   </div>
 </div>

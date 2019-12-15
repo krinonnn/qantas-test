@@ -1,7 +1,20 @@
 .content {
   width: 600px;
+  height: 95vh;
   margin: 20px auto;
   background-color: #fff;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40% 60%;
+  grid-gap: 10px;
+}
+
+.section {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0 10px;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .page-container {
@@ -13,6 +26,12 @@
   border: 1px solid black;
 }
 
-#red-font {
+.red-font {
   color: red;
+}
+
+
+
+.headline {
+  text-align: center;
 }

@@ -1,5 +1,11 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-const _ = require('lodash');
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {ModalComponent} from "../modal/modal.component";
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-results',
@@ -10,18 +16,30 @@ export class ResultsComponent implements OnInit {
   @Input() activities: any = [];
   @ViewChild('activityCard', { static: false }) activityCard: ElementRef;
 
-  constructor() {}
-
+  constructor(public dialog: MatDialog) {}
+ animal: string;
+  name: string;
   ngOnInit() {
-    _.fill(this.activities, 'Loading activity...');
-    if (this.activities && this.activities.length > 0) {
-      for (let i = 0; i < this.activities.length - 1, i++; ) {
-        this.activityCard.nativeElement.innerHTML = this.activities[i];
-      }
-    }
+
   }
 
-  openModal(activity) {
-    // TODO: its end of sprint this is someone else's problem
+  openModal(activity): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '30vw',
+      height: '30vh',
+      data: activity
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.animal = result;
+    });
+  }
+
+  noActivitiesFound() {
+    if (this.activities[0] !== undefined && this.activities[0].error) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
